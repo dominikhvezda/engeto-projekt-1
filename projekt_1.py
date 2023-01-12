@@ -32,6 +32,7 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
+
 registered_users = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
 line = 40 * "-"
 
@@ -47,6 +48,7 @@ else:
     print("unregistered user, terminating the program..")
     quit()
 print(line)
+
 
 # nechat uzivatele vybrat mezi 3 texty
 txt_choice = input("Enter a number btw. 1 and 3 to select: ")
@@ -116,17 +118,16 @@ print(
     )
 
 # spocitani delky ruznych slov
-word_len = dict()
+word_len = list()
 for word in individual_words:
-    if word not in word_len:
-        word_len[word] = len(word)
+    if word in str(individual_words):
+        word_len.append(len(word))
 
-lenght = sorted(list(word_len.values()))
-len_number = dict()
-for amount in set(lenght):
-    len_number[amount] = lenght.count(amount)
+count_words_by_lenght = {}
+for i in set(word_len):
+    count_words_by_lenght[i] = word_len.count(i)
 
 # sloupcový graf
-for word_len, pocetslov in len_number.items():
+for word_len, pocetslov in count_words_by_lenght.items():
     graf = pocetslov * "*"
     print(f"{word_len:<3}|{graf:<14}|{pocetslov:>2}")
